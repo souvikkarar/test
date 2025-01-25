@@ -1,10 +1,11 @@
 const button1 = document.getElementById('button-1');
 const newSection = document.getElementById('new-section');
 
-// Check if a cookie exists to determine if the button was clicked
-const buttonClicked = document.cookie.includes('buttonClicked=true');
+// Check if the URL contains a specific parameter (e.g., ?buttonClicked=true)
+const urlParams = new URLSearchParams(window.location.search);
+const buttonClicked = urlParams.get('buttonClicked');
 
-if (buttonClicked) {
+if (buttonClicked === 'true') {
   // If the button was clicked before, hide Button 1 and show the new section
   button1.style.display = 'none';
   newSection.style.display = 'block';
@@ -24,6 +25,6 @@ button1.addEventListener('click', () => {
   // Hide Button 1
   button1.style.display = 'none';
 
-  // Set a cookie to remember the click
-  document.cookie = 'buttonClicked=true; path=/; max-age=86400'; // Expires in 1 day
+  // Update the URL to include a query parameter
+  window.history.pushState({}, '', '?buttonClicked=true');
 });
