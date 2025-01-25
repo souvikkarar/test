@@ -1,22 +1,17 @@
-// Check if the button has been clicked before using localStorage
-const buttonClicked = localStorage.getItem('buttonClicked');
-
-const buttonContainer = document.getElementById('button-container');
 const button1 = document.getElementById('button-1');
 const newSection = document.getElementById('new-section');
 
-if (buttonClicked === 'true') {
-  // If the button was clicked before, hide Button 1 and show the new section
-  buttonContainer.style.display = 'none';
-  newSection.style.display = 'block';
-} else {
-  // If the button was not clicked before, show Button 1
-  button1.addEventListener('click', () => {
-    // Hide Button 1 and show the new section
-    buttonContainer.style.display = 'none';
-    newSection.style.display = 'block';
+// Add a click event listener to Button 1
+button1.addEventListener('click', () => {
+  // Dynamically load the new section's content
+  newSection.innerHTML = `
+    <p>This is the new section that appears after clicking Button 1!</p>
+    <p>This content was not part of the initial page load.</p>
+  `;
 
-    // Store the click action in localStorage
-    localStorage.setItem('buttonClicked', 'true');
-  });
-}
+  // Show the new section
+  newSection.style.display = 'block';
+
+  // Optionally, hide Button 1 after it's clicked
+  button1.style.display = 'none';
+});
