@@ -24,6 +24,8 @@ function loadNewSection() {
   newSection.innerHTML = `
     <p>This is the new section that appears after clicking Button 1!</p>
     <p>This content was not part of the initial page load.</p>
+    <br>
+    <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
   `;
 
   // Show the new section
